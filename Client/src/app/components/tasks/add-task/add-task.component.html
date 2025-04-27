@@ -1,0 +1,91 @@
+<div class="card p-2 mt-2">
+
+    <span class="p-4">{{TaskType}}</span>
+    <div>
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <div class="col-6 ">
+                    <mat-form-field appearance="outline" class="w-100 p-1">
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" maxlength="100" />
+                        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+                          Title is required
+                        </mat-error>
+                        <mat-error *ngIf="taskForm.get('title')?.hasError('maxlength')">
+                          Title cannot exceed 100 characters.
+                        </mat-error>
+                         <mat-error *ngIf="taskForm.get('title')?.hasError('minlength')">
+                          Title must be at least 5 characters.
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 ">
+                    <mat-form-field appearance="outline" class="w-100 p-1">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description" maxlength="250" rows="4"></textarea>
+                        <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+                          Description is required
+                        </mat-error>
+                        <mat-error *ngIf="taskForm.get('description')?.hasError('maxlength')">
+                          Description cannot exceed 250 characters.
+                        </mat-error>
+                         <mat-error *ngIf="taskForm.get('description')?.hasError('minlength')">
+                          Description must be at least 5 characters.
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="w-100 p-1">
+                        <mat-label>Due Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                         <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+                              Due Date is required.
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="w-100 p-1">
+                        <mat-label>Priority</mat-label>
+                        <mat-select formControlName="priority">
+                          <mat-option value="Low">Low</mat-option>
+                          <mat-option value="Medium">Medium</mat-option>
+                          <mat-option value="High">High</mat-option>
+                        </mat-select>
+                         <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
+                              Priority is required.
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="w-100 p-1">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status">
+                          <mat-option value="Pending">Pending</mat-option>
+                          <mat-option value="In Progress">In Progress</mat-option>
+                          <mat-option value="Completed">Completed</mat-option>
+                        </mat-select>
+                         <mat-error *ngIf="taskForm.get('status')?.hasError('required')">
+                              Status is required.
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="flex justify-end">
+                <button mat-raised-button color="primary" type="submit">
+                    Save Task
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.history/*
+
+Server/task-management-server/node_modules/*
+Client/node_modules/*
+
+Client/.vscode/*
+
+
+
+
+# Miscellaneous
+Client/.angular/cache
+.sass-cache/
+Client/connect.lock
+Client/coverage
+Client/libpeerconnection.log
+testem.log
+Client/typings
+
+# System files
+.DS_Store
+Thumbs.db
+

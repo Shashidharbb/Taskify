@@ -1,0 +1,48 @@
+<mat-toolbar class="toolbar" color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" matTooltip="menu" aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span matTooltip="Taskify">Taskify</span>
+    <span class="spacer"></span>
+
+    <span class="d-flex align-items-center me-2 user-info" *ngIf="isLoggedIn">
+        <img [src]="userImage" alt="User Image" class="user-image me-1" />
+        <span class="user-name ms-1">{{ userName }}</span>
+        <button mat-icon-button (click)="logout()" aria-label="Logout" matTooltip="logout" matTooltipPosition="below"
+            matTooltipClass="tooltip">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [fixedInViewport]="true" [fixedTopGap]="48">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['dashboard']" class="nav-item">
+                <div class="d-flex align-items-center">
+                    <mat-icon class="nav-icon">dashboard</mat-icon>
+                    <span class="nav-text">Dashboard</span>
+                </div>
+            </a>
+            <a mat-list-item [routerLink]="['users']" class="nav-item">
+                <div class="d-flex align-items-center">
+                    <mat-icon class="nav-icon">people</mat-icon>
+                    <span class="nav-text">Users</span>
+
+                </div>
+            </a>
+            <a mat-list-item [routerLink]="['tasks']" class="nav-item">
+                <div class="d-flex align-items-center">
+                    <mat-icon class="nav-icon">task</mat-icon>
+                    <span class="nav-text">Task</span>
+                </div>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+        <div class="container-fluid w-100">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

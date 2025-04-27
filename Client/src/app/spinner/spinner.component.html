@@ -1,0 +1,10 @@
+<div>
+    <div *ngIf="isLoading" class="spinner-container">
+        <ng-container>
+            <div class="overlay">
+                <mat-progress-spinner [mode]="'indeterminate'">
+                </mat-progress-spinner>
+            </div>
+        </ng-container>
+    </div>
+</div>

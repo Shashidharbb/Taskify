@@ -1,0 +1,52 @@
+<div class="container-fluid" w-100>
+
+    <div class="card mt-2">
+        <div class="d-flex align-items-center">
+          <div class="d-flex gap-1">
+            <button mat-icon-button matTooltip="Add" (click)="onAdd()">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Edit" (click)="onEdit()">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Delete" (click)="onDelete()">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              matTooltip="{{ isActive ? 'Deactivate' : 'Activate' }}"
+              (click)="onToggleActive()"
+            >
+              <mat-icon>{{ isActive ? 'check_circle' : 'cancel' }}</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    <div class="card mt-1 p-2">
+    <p-table #userTable [columns]="usersTableColumns" [value]="usersTableData" selectionMode="single" [scrollable]="true"
+        scrollHeight="calc(90vh - 6rem)" sortMode="multiple" [tableStyle]="{ 'min-width': '50rem' }" 
+        styleClass="p-datatable-gridlines p-datatable-sm p-datatable-striped" [resizableColumns]="true"
+         (onRowReorder)="onUserRowSelect($event)" [(selection)]="selectedUser" >
+        <ng-template pTemplate="header" >
+            <tr>
+                <th pResizableColumn >sl no</th>
+                <th pResizableColumn *ngFor="let col of usersTableColumns"  pSortableColumn="{{col.field}}">
+                     {{ col.header }}
+                     <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData  let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="rowData"  [pSelectableRowIndex]="rowIndex">
+                <td>{{ rowIndex + 1 }}</td>
+                <td *ngFor="let col of usersTableColumns">
+                    {{ rowData[col.field] }}
+                </td>
+            </tr>
+        </ng-template>
+       
+    </p-table>
+
+</div>
+</div>

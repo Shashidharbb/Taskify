@@ -1,0 +1,53 @@
+<div class="container-fluid w-100">
+
+<div class="class row m-2">
+    <div>
+        <a [routerLink]="['login']">
+            <img src="assets/logo.ico" width="32" height="32" class="align-middle m-2" alt="Logo" class="logo" />
+        </a>
+        <span class="fw-bold fs-6 ms-2">Taskify</span>   
+    </div>
+</div>
+
+<div class="row justify-content-center align-items-center p-4">
+    <div class="col-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-lg">
+            <div class="card-body p-4 p-md-5">
+                <h2 class="text-center mb-4">Login</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="w-100 mb-3" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" type="email" placeholder="name@example.com"
+                            required />
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="loginForm.get('email')?.invalid">
+                            Email is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100 mb-3" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" type="password" placeholder="Password"
+                            required />
+                        <mat-icon matSuffix>password</mat-icon>
+                        <mat-error *ngIf="loginForm.get('password')?.invalid">
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="class row mt-1">
+                        <div class="col-6 mt-2">
+                            <a mat-flat-button color="primary" class="w-100 p-2" [routerLink]="['/signup']">Signup</a>
+                        </div>
+                        <div class="col-6 mt-2">
+                                <a mat-flat-button matTooltip="Login" color="primary" class="w-100 p-2" (click)="onSubmit()" >Log in </a>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-primary w-100" type="submit">Login</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+  
