@@ -1,0 +1,14 @@
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+
+
+# Ignore node_modules in Server folder only
+
+
+!task-management-server/node_modules/.bin
